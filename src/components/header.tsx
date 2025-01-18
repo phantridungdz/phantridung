@@ -2,6 +2,7 @@ import { GlobeIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RESUME_DATA } from "@/data/resume-data";
+import { ModeSwitch } from "./mode-switch";
 
 interface LocationLinkProps {
   location: typeof RESUME_DATA.location;
@@ -141,41 +142,45 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
  */
 export function Header() {
   return (
-    <header className="flex items-center justify-between">
-      <div className="flex-1 space-y-1.5">
-        <h1 className="text-2xl font-bold" id="resume-name">
-          {RESUME_DATA.name}
-        </h1>
-        <p
-          className="max-w-md text-pretty font-mono text-sm text-foreground/80 print:text-[12px]"
-          aria-labelledby="resume-name"
-        >
-          {RESUME_DATA.about}
-        </p>
+    <header className="flex flex-col ">
+      <div className="flex flex-row items-center justify-between">
+        <div className="flex-1 space-y-1.5">
+          <h1 className="text-2xl font-bold" id="resume-name">
+            {RESUME_DATA.name}
+          </h1>
+          <p
+            className="max-w-md text-pretty font-mono text-sm text-foreground/80 print:text-[12px]"
+            aria-labelledby="resume-name"
+          >
+            {RESUME_DATA.about}
+          </p>
 
-        <LocationLink
-          location={RESUME_DATA.location}
-          locationLink={RESUME_DATA.locationLink}
-        />
+          <LocationLink
+            location={RESUME_DATA.location}
+            locationLink={RESUME_DATA.locationLink}
+          />
 
-        <ContactButtons
-          contact={RESUME_DATA.contact}
-          personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
-        />
+          <ContactButtons
+            contact={RESUME_DATA.contact}
+            personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
+          />
 
-        <PrintContact
-          contact={RESUME_DATA.contact}
-          personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
-        />
+          <PrintContact
+            contact={RESUME_DATA.contact}
+            personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
+          />
+        </div>
+        <div className="flex flex-col items-center justify-end gap-2">
+          <Avatar className="size-28" aria-hidden="true">
+            <AvatarImage
+              alt={`${RESUME_DATA.name}'s profile picture`}
+              src={RESUME_DATA.avatarUrl}
+            />
+            <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
+          </Avatar>
+          <ModeSwitch />
+        </div>
       </div>
-
-      <Avatar className="size-28" aria-hidden="true">
-        <AvatarImage
-          alt={`${RESUME_DATA.name}'s profile picture`}
-          src={RESUME_DATA.avatarUrl}
-        />
-        <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
-      </Avatar>
     </header>
   );
 }

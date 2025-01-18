@@ -1,14 +1,18 @@
-import { CommandMenu } from "@/components/command-menu";
 import { Metadata } from "next";
 import { RESUME_DATA } from "@/data/resume-data";
-import { WorkExperience } from "./components/WorkExperience";
-import { Projects } from "./components/Projects";
-import { Education } from "./components/Education";
-import { Summary } from "./components/Summary";
-import { Skills } from "./components/Skills";
-import { Header } from "./components/Header";
+import { WorkExperience } from "@/components/work-experience";
+import { Projects } from "@/components/projects";
+import { Education } from "@/components/education";
+import { Summary } from "@/components/summary";
+import { Skills } from "@/components/skills";
+import { Header } from "@/components/header";
+import { CommandMenu } from "@/components/command-menu";
+import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
+  ),
   title: `${RESUME_DATA.name} - Resume`,
   description: RESUME_DATA.about,
   openGraph: {
@@ -18,18 +22,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://cv.jarocki.me/opengraph-image",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: `${RESUME_DATA.name}'s profile picture`,
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${RESUME_DATA.name} - Resume`,
-    description: RESUME_DATA.about,
-    images: ["https://cv.jarocki.me/opengraph-image"],
   },
 };
 
@@ -58,35 +56,36 @@ function getCommandMenuLinks() {
 export default function ResumePage() {
   return (
     <main
-      className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-11 md:p-16"
+      className="container relative mx-auto scroll-my-12 overflow-auto p-4 md:p-16 print:p-11"
       id="main-content"
     >
-      <div className="sr-only">
-        <h1>{RESUME_DATA.name}&apos;s Resume</h1>
-      </div>
-
-      <section
-        className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-4"
-        aria-label="Resume Content"
-      >
-        <Header />
-
-        <div className="space-y-8 print:space-y-4">
-          <Summary summary={RESUME_DATA.summary} />
-
-          <WorkExperience work={RESUME_DATA.work} />
-
-          <Education education={RESUME_DATA.education} />
-
-          <Skills skills={RESUME_DATA.skills} />
-
-          <Projects projects={RESUME_DATA.projects} />
+      <Card className="p-4">
+        <div className="sr-only">
+          <h1>{RESUME_DATA.name}&apos;s Resume</h1>
         </div>
-      </section>
 
-      <nav className="print:hidden" aria-label="Quick navigation">
-        <CommandMenu links={getCommandMenuLinks()} />
-      </nav>
+        <section
+          className="container w-full print:space-y-4"
+          aria-label="Resume Content"
+        >
+          <Header />
+          <div className="space-y-8 print:space-y-4">
+            <Summary summary={RESUME_DATA.summary} />
+
+            <WorkExperience work={RESUME_DATA.work} />
+
+            <Education education={RESUME_DATA.education} />
+
+            <Skills skills={RESUME_DATA.skills} />
+
+            <Projects projects={RESUME_DATA.projects} />
+          </div>
+        </section>
+
+        <nav className="print:hidden" aria-label="Quick navigation">
+          <CommandMenu links={getCommandMenuLinks()} />
+        </nav>
+      </Card>
     </main>
   );
 }

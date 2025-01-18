@@ -1,13 +1,13 @@
-import { Badge } from "../../components/ui/badge";
+import { Badge } from "./ui/badge";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from "../../components/ui/card";
-import { Section } from "../../components/ui/section";
-import { RESUME_DATA } from "../../data/resume-data";
+} from "./ui/card";
+import { Section } from "./ui/section";
+import { RESUME_DATA } from "../data/resume-data";
 
 type ProjectTags = readonly string[];
 
@@ -128,7 +128,7 @@ export function Projects({ projects }: ProjectsProps) {
         Side projects
       </h2>
       <div
-        className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"
+        className="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2"
         role="feed"
         aria-labelledby="side-projects"
       >
@@ -141,7 +141,7 @@ export function Projects({ projects }: ProjectsProps) {
               title={project.title}
               description={project.description}
               tags={project.techStack}
-              link={"link" in project ? project.link.href : undefined}
+              // link={"link" in project ? project.link.href : undefined}
             />
           </article>
         ))}
