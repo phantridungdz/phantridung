@@ -24,7 +24,7 @@ export const RESUME_DATA = {
     </>
   ),
   avatarUrl: "avatar/phan-tri-dung.jpg",
-  // personalWebsiteUrl: "https://jarocki.me",
+  personalWebsiteUrl: "https://phantridung.vercel.app",
   contact: {
     email: "phantridungdz@gmail.com",
     tel: "0877464243",
@@ -48,7 +48,7 @@ export const RESUME_DATA = {
   work: [
     {
       company: "Freelance",
-      link: null,
+      link: "https://www.maybank.com",
       badges: ["Remote", "Android", "Java", "Unity"],
       title: "Freelance Developer",
       logo: null,
@@ -64,7 +64,7 @@ export const RESUME_DATA = {
     },
     {
       company: "TechJDI",
-      link: "https://techjdi.com/",
+      link: "https://techjdi.com",
       badges: [
         "Hybrid",
         "React",
@@ -87,7 +87,7 @@ export const RESUME_DATA = {
     },
     {
       company: "Maybank",
-      link: "https://www.maybank.com/",
+      link: "https://www.maybank.com",
       badges: ["On Site", "ExtJS", "C#", "Laravel"],
       title: "Software Developer",
       logo: null,
@@ -128,7 +128,7 @@ export const RESUME_DATA = {
       description:
         "A Chrome extension for HR and KOLs to create LinkedIn posts powered by AI assistance.",
       logo: null,
-      link: null,
+      link: "https://talentjdi.com/",
     },
     {
       title: "TechJDI Talent Website",
@@ -136,10 +136,7 @@ export const RESUME_DATA = {
       description:
         "Developed a talent management website for TechJDI using Next.js and Payload CMS.",
       logo: ConsultlyLogo,
-      link: {
-        label: "TalentJDI",
-        href: "https://talentjdi.com/",
-      },
+      link: "https://talentjdi.com/",
     },
     {
       title: "EMO",
@@ -147,14 +144,12 @@ export const RESUME_DATA = {
       description:
         "Back-office application for managing finance-related tasks at Maybank.",
       logo: null,
-      link: null,
     },
     {
       title: "OAP",
       techStack: ["Nextjs"],
       description: "Online trading account opening platform for Maybank.",
       logo: null,
-      link: null,
     },
     {
       title: "Maybank Homepage",
@@ -162,7 +157,6 @@ export const RESUME_DATA = {
       description:
         "Full-stack development for Maybank's homepage, enhancing user experience and performance.",
       logo: null,
-      link: null,
     },
   ],
 } as const;
